@@ -102,12 +102,14 @@ function getEnvConfig(): Partial<AppConfig> {
         PSN_ACCOUNTS,
     } = process.env;
 
+    const envVal = (v: string | undefined) => (v && v !== 'null' ? v : undefined);
+
     return {
         mqtt: {
-            host: MQTT_HOST,
-            port: MQTT_PORT,
-            pass: MQTT_PASSWORD,
-            user: MQTT_USERNAME,
+            host: envVal(MQTT_HOST),
+            port: envVal(MQTT_PORT),
+            pass: envVal(MQTT_PASSWORD),
+            user: envVal(MQTT_USERNAME),
             discovery_topic: DISCOVERY_TOPIC || "homeassistant",
         },
 

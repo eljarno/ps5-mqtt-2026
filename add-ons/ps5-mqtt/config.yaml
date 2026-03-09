@@ -50,4 +50,4 @@ schema:
   account_check_interval: int
   include_ps4_devices: bool
 stdin: true
-image: ghcr.io/funkeyflo/ps5-mqtt/{arch}
+image: ghcr.io/eljarno/ps5-mqtt/{arch}

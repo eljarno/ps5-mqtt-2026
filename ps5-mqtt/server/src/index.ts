@@ -65,6 +65,11 @@ async function getPsnAccountRegistry(
 async function run() {
     debug("Started");
 
+    if (!appConfig.mqtt?.host) {
+        logError("MQTT host is not configured! Please configure MQTT in the add-on options or ensure the Mosquitto broker add-on is set up as the HA MQTT integration.");
+        process.exit(1);
+    }
+
     debug("Establishing MQTT Connection...")
     const mqtt: MQTT.AsyncMqttClient = await createMqtt();
     debug("Connected to MQTT Broker!")
